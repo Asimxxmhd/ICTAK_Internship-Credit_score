@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Score Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('static/credit_score.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            margin: 20px;
+            color: #1a1a1a; 
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #11267a;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0f2670;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #ffffff;
+            background-color: #090173; 
+            padding: 10px; /* Add padding for better visibility */
+            border-radius: 4px; /* Add border-radius for a rounded look */
+        }
+    </style>
+</head>
+<body>
+    <h1>CREDIT SCORE PREDICTION</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+        <label for="occupation">Occupation</label>
+        <input type="number" id="occupation" name="OCCUPATION" value="{{ occupation }}" required><br>
+
+        <label for="creditmix">Credit Mix</label>
+        <input type="number" id="creditmix" name="Credit_Mix" value="{{ creditmix }}" required><br>
+
+        <label for="payminamo">Payment of Minimum Amount</label>
+        <input type="number" id="payminamo" name="Payment_of_Min_Amount" value="{{ payminamo }}" required><br>
+
+        <label for="paybeh">Payment Behaviour</label>
+        <input type="number" id="paybeh" name="Payment_Behaviour" value="{{ paybeh }}" required><br>
+
+        <label for="bankacc">Number of Bank Accounts</label>
+        <input type="number" id="bankacc" name="Num_Bank_Accounts" value="{{ bankacc }}" required><br>
+
+        <label for="creditcar">Number of Credit Cards</label>
+        <input type="number" id="creditcar" name="Num_Credit_Card" value="{{ creditcar }}" required><br>
+
+        <label for="intrate">Interest Rate</label>
+        <input type="number" id="intrate" name="Interest_Rate" value="{{ intrate }}" required><br>
+
+        <label for="noloan">Number of Loan</label>
+        <input type="number" id="noloan" name="Num_of_Loan" value="{{ noloan }}" required><br>
+
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+        <h2>Prediction: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
